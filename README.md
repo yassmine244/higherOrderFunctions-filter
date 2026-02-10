@@ -14,6 +14,9 @@ Il est bon de savoir que la méthode **filter** permet de créer un tableau ne c
 
 ```javascript
 function nombresPairs(nombres) {
+  return filter(nombres, function (el) {
+    return el % 2 === 0;
+  });
 }
 
 nombresPairs([1,2,3,4,5,6]); // => [2,4,6]
@@ -25,7 +28,11 @@ nombresPairs([1,2,3,4,5,6]); // => [2,4,6]
 
 ```javascript
 function multiplesDeTrois(nombres) {
+  return filter(nombres, function (el) {
+    return el % 3 === 0;
+  });
 }
+
 
 multiplesDeTrois([1,3,4,6,9,10]); // => [3,6,9]
 ```
@@ -36,6 +43,9 @@ multiplesDeTrois([1,3,4,6,9,10]); // => [3,6,9]
 
 ```javascript
 function nombresPositifs(nombres) {
+  return filter(nombres, function (el) {
+    return el > 0;
+  });
 }
 
 nombresPositifs([-3,2,-1,5,0]); // => [2,5]
@@ -47,7 +57,11 @@ nombresPositifs([-3,2,-1,5,0]); // => [2,5]
 
 ```javascript
 function longueurPaire(chaines) {
+  return filter(chaines, function (el) {
+    return el.length % 2 === 0;
+  });
 }
+
 
 longueurPaire(["chat","chien","lion"]); // => ["chat","lion"]
 ```
@@ -62,6 +76,9 @@ longueurPaire(["chat","chien","lion"]); // => ["chat","lion"]
 
 ```javascript
 function nombresImpairs(nombres) {
+    return filter(nombres, function (el) {
+    return el % 2 !== 0;
+  });
 }
 ```
 
@@ -71,6 +88,9 @@ function nombresImpairs(nombres) {
 
 ```javascript
 function nombresNegatifs(nombres) {
+    return filter(nombres, function (el) {
+    return el < 0;
+  });
 }
 ```
 
@@ -80,6 +100,9 @@ function nombresNegatifs(nombres) {
 
 ```javascript
 function superieursASix(nombres) {
+    return filter(nombres, function (el) {
+    return el > 6;
+  });
 }
 ```
 
@@ -92,6 +115,9 @@ et retourne uniquement les chaînes qui commencent par ce caractère.
 
 ```javascript
 function commenceParCaractere(chaines, caractere) {
+    return filter(chaines, function (el) {
+    return el[0] === caractere;
+  });
 }
 
 var mots = 'the quick brown fox jumps over the lazy dog'.split(' ');
@@ -107,6 +133,9 @@ commenceParCaractere(mots, 't'); // => ['the','the']
 
 ```javascript
 function indexPairEtLongueurPaire(chaines) {
+    return filter(chaines, function (el, i) {
+    return i % 2 === 0 && el.length % 2 === 0;
+  });
 }
 indexPairEtLongueurPaire(['lion','monkey','aardvaark','cat','doge']);
 // => ['lion','doge']
@@ -122,7 +151,17 @@ indexPairEtLongueurPaire(['red','green','purple','blue','yellow']);
 
 ```javascript
 function deplacerZeros(nombres) {
+  var sansZeros = filter(nombres, function (el) {
+    return el !== 0;
+  });
+
+  var zeros = filter(nombres, function (el) {
+    return el === 0;
+  });
+
+  return sansZeros.concat(zeros);
 }
+
 
 deplacerZeros([2,0,3,0,40,3,6,0,10,11]);
 // => [2,3,40,3,6,10,11,0,0,0]
